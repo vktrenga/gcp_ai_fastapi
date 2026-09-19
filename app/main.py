@@ -5,6 +5,7 @@ from pytest import Session
 from pytest import Session
 from services.order.api.order import router as order_router
 from services.order.db.database import get_db as order_get_db
+
 from sqlalchemy import text
 
 
@@ -12,15 +13,19 @@ from sqlalchemy import text
 from services.tenant.api.tenant import router as tenant_router
 from services.tenant.db.database import create_tables as create_tenant_tables
 
-
+### product  Start
+from services.product.api.product import router as product_router
+from services.product.db.database import create_tables as create_product_tables
 app = FastAPI()
 create_tenant_tables()
-
+create_product_tables()
 
 ### router registration
 
 app.include_router(order_router, prefix="/api")
 app.include_router(tenant_router, prefix='/api')
+app.include_router(product_router, prefix='/api')
+
 
 @app.get("/health")
 async def health_check():
