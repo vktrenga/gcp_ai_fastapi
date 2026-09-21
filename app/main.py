@@ -16,6 +16,10 @@ from services.tenant.db.database import create_tables as create_tenant_tables
 ### product  Start
 from services.product.api.product import router as product_router
 from services.product.db.database import create_tables as create_product_tables
+
+### 
+from services.search.api.search import router as search_router
+
 app = FastAPI()
 create_tenant_tables()
 create_product_tables()
@@ -25,6 +29,8 @@ create_product_tables()
 app.include_router(order_router, prefix="/api")
 app.include_router(tenant_router, prefix='/api')
 app.include_router(product_router, prefix='/api')
+app.include_router(search_router, prefix='/api')
+
 
 
 @app.get("/health")
