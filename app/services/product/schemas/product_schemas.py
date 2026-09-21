@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import Optional
+from typing import Any, Optional
 
 from pydantic import UUID4, BaseModel
 
@@ -46,6 +46,7 @@ class ProductResponseSchema(BaseModel):
     is_active: bool
     created_at: datetime
     updated_at: datetime
+    embedding: Optional[Any]
 
     class Config:
         orm_mode = True

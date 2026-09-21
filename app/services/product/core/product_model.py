@@ -4,7 +4,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from services.product.db.database import Base
-
+from pgvector.sqlalchemy import VECTOR
 class Product(Base):
     __tablename__ = "products"
     product_id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -26,3 +26,6 @@ class Product(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+
+    # New embedding column
+    embedding = Column(VECTOR(384))
