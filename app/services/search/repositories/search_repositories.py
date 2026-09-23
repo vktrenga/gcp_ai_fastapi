@@ -1,4 +1,3 @@
-from ast import List
 from datetime import datetime
 from typing import Any
 import uuid
@@ -7,7 +6,7 @@ from pytest import Session
 from sqlalchemy import text
 from services.search.core.embedding_service import EmbeddingService
 from services.search.schemas.search_schemas import SearchResponseSchema
-def to_pgvector(embedding: List[float]) -> str:
+def to_pgvector(embedding: list[float]) -> str:
     return f"ARRAY[{','.join(str(x) for x in embedding)}]::vector"
 
 def search(

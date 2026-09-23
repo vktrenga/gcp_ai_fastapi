@@ -81,6 +81,16 @@ uv run uvicorn main:app --reload
 
 Open the interactive API documentation at `http://localhost:8000/docs`.
 
+### Run PostgreSQL with pgvector in Docker
+
+Start PostgreSQL, create the service databases, enable the `vector` extension, and start the API:
+
+```bash
+docker compose up --build
+```
+
+The API is available at `http://localhost:8000/docs`; PostgreSQL is exposed on host port `5433`. Stop the services with `docker compose down`; add `-v` to also remove the PostgreSQL data volume.
+
 ## Quick checks
 
 ```bash

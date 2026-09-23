@@ -1,7 +1,10 @@
+import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-DATABASE_URL = "postgresql://postgres:rArjun%4026@localhost:5432/gcp_ai_fastapi_customer"
+DATABASE_HOST = os.getenv("DATABASE_HOST", "localhost")
+DATABASE_URL = f"postgresql://postgres:rArjun%4026@{DATABASE_HOST}:5432/gcp_ai_fastapi_customer"
 
 engine = create_engine(DATABASE_URL)
 
